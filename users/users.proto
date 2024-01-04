@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package users;
+
+option go_package = "repo/users";
+
+import "google/api/annotations.proto";
+import "books/books.proto";
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloResponse {
+    string message = 1;
+    books.BooksResponse books = 2;
+}
+
+service HelloService {
+    rpc SayHello (HelloRequest) returns (HelloResponse) {
+        option(google.api.http) = {
+            get: "/api/{name}",
+        };
+    }
+}

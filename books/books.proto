@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package books;
+
+option go_package = "repo/books";
+
+import "google/api/annotations.proto";
+
+message BooksRequest {
+    string name = 1;
+}
+
+message BooksResponse {
+    repeated string books = 1;
+}
+
+service BooksService {
+    rpc GetBooksList (BooksRequest) returns (BooksResponse) {
+        option(google.api.http) = {
+            get: "/api/books",
+        };
+    }
+}
