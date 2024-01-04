@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package users;
 
-option go_package = "repo/users";
+option go_package = "github.com/cobradigital/proto-test/users";
 
 import "google/api/annotations.proto";
 import "books/books.proto";
