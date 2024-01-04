@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package transactions;
+
+option go_package = "github.com/cobradigital/proto-test/transactions";
+
+import "google/api/annotations.proto";
+import "products/products.proto";
+
+message Request {
+    string id = 1;
+}
+
+message Response {
+    string id = 1;
+    string pembeli = 2;
+    repeated products.Response product = 3;
+    int32 total = 4;
+}
+
+service TransactionsService {
+    rpc GetTransaction (Request) returns (Response) {
+        option(google.api.http) = {
+            get: "/api/transaction",
+        };
+    }
+}

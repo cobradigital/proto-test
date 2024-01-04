@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package products;
+
+option go_package = "github.com/cobradigital/proto-test/products";
+
+message Request {
+    string id = 1;
+}
+
+message Response {
+    string name = 1;
+    string qty = 2;
+    int32 price = 3;
+}
+
+service ProductService {
+    rpc GetProduct (Request) returns (Response) {}
+}
